@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈</title>
+</head>
+<body>
+    {% if st == "nopass" %}
+        <h1>{{ quiz_title|safe }}<br><br></h1>
+        <h4>{{ quiz_content|safe }}<br><br>{{ quiz_choice|safe }}</h4>
+        
+        <form action = "/quiz_check" method="POST">
+            정답: <input type = "text" name = "answer">
+            <input type="hidden" name="number" value = {{quiz_numb}}>
+            <input type="hidden" name="real_answer" value = {{quiz_answer}}>
+            <input type = "submit" value = "확인">
+        </form>
+
+    {% elif st == "pass" %}
+        <h1> 정답입니다. </h1>
+
+        <h3> <br><br>원하시는 페이지로 가세요.</h3>
+
+    {% elif st == "nonopass" %}
+        <h1> 오답입니다. </h1>
+
+        <h3> <br><br>원하시는 페이지로 가세요.</h3>
+
+    {% else %}
+        <h1>끔찍한 오류</h1>
+
+    {% endif %}
+
+</body>
+</html>
+
+<!-- return render_template('main_quiz_index.html',
+                            st = "nopass",
+                            quiz_numb = quiz_number_P,
+                            quiz_title = return_quiz[0], 
+                            quiz_content = return_quiz[1], 
+                            quiz_choice = mega_temp,
+                            quiz_answer = return_quiz[3]) -->
