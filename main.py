@@ -7,7 +7,7 @@ def quiz_counter(): #퀴즈 파일 몇 개 인지 확인
     try:
         count = 0
         while 1:
-            with open("quiz\\" + "quiz_content" + str(count + 1) + ".txt", "r", encoding="utf-8"):
+            with open("quiz_content" + str(count + 1) + ".txt", "r", encoding="utf-8"):
                 pass
             count += 1
 
@@ -23,7 +23,7 @@ def quiz_reader(num): #퀴즈 내용 가져오기
     
     num = str(num)
 
-    with open("quiz\\" + "quiz_content" + num + ".txt", "r", encoding="utf-8") as f:
+    with open("quiz_content" + num + ".txt", "r", encoding="utf-8") as f:
         return_text = f.read().split('\ncut')
     
     return_text[1] = return_text[1].replace('\n', "<br>")
